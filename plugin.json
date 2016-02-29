@@ -1,0 +1,43 @@
+{
+  "type": "app",
+  "name": "Github Stats",
+  "id": "gitstats-app",
+
+  "staticRoot": "./src",
+
+  "routes": [
+    {
+      "path": "api/*",
+      "method": "*",
+      "url": "http://localhost:8081/api",
+      "headers": [
+        {"name": "X-Auth-API-Token", "content": "{{.SecureJsonData.token}}"}
+      ]
+    }
+  ],
+
+  "info": {
+    "description": "Github Stats",
+    "author": {
+      "name": "Raintank.",
+      "url": "http://raintank.io"
+    },
+    "keywords": ["raintnak", "Github"],
+    "logos": {
+      "small": "img/logo_small.png",
+      "large": "img/logo_large.png"
+    },
+    "links": [
+      {"name": "Project site", "url": "http://raintank.io"},
+      {"name": "License & Terms", "url": "http://raintank.io"}
+    ],
+    "version": "1.0.0",
+    "updated": "2016-02-29"
+  },
+
+  "pages": [],
+  "dependencies": {
+    "grafanaVersion": "2.6.x",
+    "plugins": []
+  }
+}
