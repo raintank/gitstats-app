@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/module.js"],"names":[],"mappings":";;;;;;;;AAAQ,a,mBAAA,U;;;yBAGP,U","file":"module.js","sourcesContent":["import {ConfigCtrl} from './config/config.js';\n\nexport {\n\tConfigCtrl\n};\n\n"]}

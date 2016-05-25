@@ -6,7 +6,7 @@
     {
       "path": "graphite/*",
       "method": "*",
-      "url": "https://tsdb.raintank.io/graphite",
+      "url": "http://172.17.0.1:8081/graphite",
       "reqSignedIn": true,
       "reqRole": "Viewer",
       "headers": [
@@ -16,7 +16,7 @@
     {
       "path": "elasticsearch/*",
       "method": "*",
-      "url": "https://tsdb.raintank.io/elasticsearch",
+      "url": "http://172.17.0.1:8081/elasticsearch",
       "reqSignedIn": true,
       "reqRole": "Viewer",
       "headers": [
@@ -26,7 +26,7 @@
     {
       "path": "api/*",
       "method": "*",
-      "url": "https://task-server.raintank.io/api/v1/",
+      "url": "http://172.17.0.1:8082/api/v1/",
       "reqSignedIn": true,
       "reqRole": "Admin",
       "headers": [
