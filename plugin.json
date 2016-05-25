@@ -55,7 +55,15 @@
     "updated": "2016-05-25"
   },
 
-  "pages": [],
+  "includes": [
+    {
+      "type": "dashboard",
+      "name": "Github Stats",
+      "path": "dashboards/github-stats.json",
+      "addToNav": true,
+      "defaultNav": true
+    }
+  ],
   "dependencies": {
     "grafanaVersion": "3.0+",
     "plugins": []

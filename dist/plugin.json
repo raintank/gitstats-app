@@ -6,7 +6,7 @@
     {
       "path": "graphite/*",
       "method": "*",
-      "url": "http://172.17.0.1:8081/graphite",
+      "url": "https://tsdb.raintank.io/graphite",
       "reqSignedIn": true,
       "reqRole": "Viewer",
       "headers": [
@@ -16,7 +16,7 @@
     {
       "path": "elasticsearch/*",
       "method": "*",
-      "url": "http://172.17.0.1:8081/elasticsearch",
+      "url": "https://tsdb.raintank.io/elasticsearch",
       "reqSignedIn": true,
       "reqRole": "Viewer",
       "headers": [
@@ -26,7 +26,7 @@
     {
       "path": "api/*",
       "method": "*",
-      "url": "http://172.17.0.1:8082/api/v1/",
+      "url": "https://task-server.raintank.io/api/v1/",
       "reqSignedIn": true,
       "reqRole": "Admin",
       "headers": [
@@ -55,7 +55,15 @@
     "updated": "2016-05-25"
   },
 
-  "pages": [],
+  "includes": [
+    {
+      "type": "dashboard",
+      "name": "Github Stats",
+      "path": "dashboards/github-stats.json",
+      "addToNav": true,
+      "defaultNav": true
+    }
+  ],
   "dependencies": {
     "grafanaVersion": "3.0+",
     "plugins": []
