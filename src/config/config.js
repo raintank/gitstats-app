@@ -1,5 +1,7 @@
 import configTemplate from './config.html!text';
 
+import _ from 'lodash' ;
+
 class GitstatsConfigCtrl {
   /** @ngInject */
     constructor($scope, $injector, backendSrv) {
@@ -131,7 +133,7 @@ class GitstatsConfigCtrl {
       "enabled": true
     };
 
-    this.backendSrv.post("/api/plugin-proxy/raintank-gitstats-app/api/tasks", task).then(function(resp) {
+    this.backendSrv.post("/api/plugin-proxy/raintank-gitstats-app/api/tasks", task).then(function() {
       self.validateKey();
       self.cancelNewTask();
     });
@@ -139,7 +141,7 @@ class GitstatsConfigCtrl {
 
   removeTask(task) {
     var self = this;
-    this.backendSrv.delete("/api/plugin-proxy/raintank-gitstats-app/api/tasks/"+task.id).then(function(resp) {
+    this.backendSrv.delete("/api/plugin-proxy/raintank-gitstats-app/api/tasks/"+task.id).then(function() {
       self.validateKey();
     });
   }

@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-System.register(["./config.html!text"], function (_export, _context) {
+System.register(['./config.html!text', 'lodash'], function (_export, _context) {
   "use strict";
 
-  var configTemplate, _createClass, GitstatsConfigCtrl;
+  var configTemplate, _, _createClass, GitstatsConfigCtrl;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -14,6 +14,8 @@ System.register(["./config.html!text"], function (_export, _context) {
   return {
     setters: [function (_configHtmlText) {
       configTemplate = _configHtmlText.default;
+    }, function (_lodash) {
+      _ = _lodash.default;
     }],
     execute: function () {
       _createClass = function () {
@@ -34,7 +36,7 @@ System.register(["./config.html!text"], function (_export, _context) {
         };
       }();
 
-      _export("ConfigCtrl", GitstatsConfigCtrl = function () {
+      _export('ConfigCtrl', GitstatsConfigCtrl = function () {
         /** @ngInject */
 
         function GitstatsConfigCtrl($scope, $injector, backendSrv) {
@@ -57,7 +59,7 @@ System.register(["./config.html!text"], function (_export, _context) {
         }
 
         _createClass(GitstatsConfigCtrl, [{
-          key: "validateKey",
+          key: 'validateKey',
           value: function validateKey() {
             var self = this;
             var p = this.backendSrv.get("/api/plugin-proxy/raintank-gitstats-app/api/tasks", { metric: "/raintank/apps/gitstats/*" });
@@ -74,7 +76,7 @@ System.register(["./config.html!text"], function (_export, _context) {
             return p;
           }
         }, {
-          key: "preUpdate",
+          key: 'preUpdate',
           value: function preUpdate() {
             var model = this.appModel;
             if (!model.enabled) {
@@ -94,7 +96,7 @@ System.register(["./config.html!text"], function (_export, _context) {
             return this.initDatasource();
           }
         }, {
-          key: "postUpdate",
+          key: 'postUpdate',
           value: function postUpdate() {
             if (!this.appModel.enabled) {
               return Promise.resolve();
@@ -105,7 +107,7 @@ System.register(["./config.html!text"], function (_export, _context) {
             });
           }
         }, {
-          key: "initDatasource",
+          key: 'initDatasource',
           value: function initDatasource() {
             var self = this;
             //check for existing datasource.
@@ -157,7 +159,7 @@ System.register(["./config.html!text"], function (_export, _context) {
             return p;
           }
         }, {
-          key: "addNewTask",
+          key: 'addNewTask',
           value: function addNewTask() {
             var self = this;
             var task = {
@@ -175,27 +177,27 @@ System.register(["./config.html!text"], function (_export, _context) {
               "enabled": true
             };
 
-            this.backendSrv.post("/api/plugin-proxy/raintank-gitstats-app/api/tasks", task).then(function (resp) {
+            this.backendSrv.post("/api/plugin-proxy/raintank-gitstats-app/api/tasks", task).then(function () {
               self.validateKey();
               self.cancelNewTask();
             });
           }
         }, {
-          key: "removeTask",
+          key: 'removeTask',
           value: function removeTask(task) {
             var self = this;
-            this.backendSrv.delete("/api/plugin-proxy/raintank-gitstats-app/api/tasks/" + task.id).then(function (resp) {
+            this.backendSrv.delete("/api/plugin-proxy/raintank-gitstats-app/api/tasks/" + task.id).then(function () {
               self.validateKey();
             });
           }
         }, {
-          key: "cancelNewTask",
+          key: 'cancelNewTask',
           value: function cancelNewTask() {
             this.newTask = {};
             this.addNew = false;
           }
         }, {
-          key: "toggleAddNew",
+          key: 'toggleAddNew',
           value: function toggleAddNew() {
             this.addNew = true;
           }
@@ -206,7 +208,7 @@ System.register(["./config.html!text"], function (_export, _context) {
 
       GitstatsConfigCtrl.template = configTemplate;
 
-      _export("ConfigCtrl", GitstatsConfigCtrl);
+      _export('ConfigCtrl', GitstatsConfigCtrl);
     }
   };
 });
