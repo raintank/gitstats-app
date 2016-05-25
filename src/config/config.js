@@ -126,7 +126,7 @@ class GitstatsConfigCtrl {
           "access_token": this.newTask.access_token
         }
       },
-      "interval": 60,
+      "interval": 600,
       "route": { "type": "any", "config": {}},
       "enabled": true
     };
