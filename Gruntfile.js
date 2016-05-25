@@ -48,7 +48,38 @@ module.exports = function(grunt) {
       },
     },
 
+    jshint: {
+      source: {
+        files: {
+          src: ['src/**/*.js'],
+        }
+      },
+      options: {
+        jshintrc: true,
+        reporter: require('jshint-stylish'),
+        ignores: [
+          'node_modules/*',
+          'dist/*',
+        ]
+      }
+    },
+    jscs: {
+      src: ['src/**/*.js'],
+      options: {
+        config: ".jscs.json",
+      },
+    }
+
+
   });
 
   grunt.registerTask('default', ['clean', 'copy:src_to_dist',  'copy:pluginDef', 'babel']);
+  grunt.registerTask('test', [
+    'clean',
+    'copy:src_to_dist',
+    'copy:pluginDef',
+    'babel',
+    'jshint',
+    'jscs',
+    ]);
 };
