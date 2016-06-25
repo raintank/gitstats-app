@@ -24,9 +24,9 @@
       ]
     },
     {
-      "path": "api/*",
+      "path": "tasks",
       "method": "*",
-      "url": "https://task-server.raintank.io/api/v1/",
+      "url": "https://task-server.raintank.io/api/v1/tasks",
       "reqSignedIn": true,
       "reqRole": "Admin",
       "headers": [
@@ -62,7 +62,9 @@
       "path": "dashboards/github-stats.json",
       "addToNav": true,
       "defaultNav": true
-    }
+    },
+    { "type": "page", "name": "List Tasks", "component": "SnapTaskListCtrl", "role": "Viewer",  "addToNav": true},
+    { "type": "page", "name": "Add Task", "component": "SnapTaskAddCtrl", "role": "Viewer",  "addToNav": true}
   ],
   "dependencies": {
     "grafanaVersion": "3.0+",

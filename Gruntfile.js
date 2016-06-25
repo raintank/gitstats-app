@@ -11,21 +11,21 @@ module.exports = function(grunt) {
 
     copy: {
       src_to_dist: {
-        cwd: "src",
+        cwd: 'src',
         expand: true,
         src: ['**/*', '!**/*.js', '!**/*.scss'],
         dest: 'dist'
       },
       pluginDef: {
         expand: true,
-        src: ['plugin.json', 'README.md'],
+        src: ['README.md'],
         dest: 'dist',
       }
     },
 
     watch: {
       rebuild_all: {
-        files: ['src/**/*', 'plugin.json'],
+        files: ['src/**/*', 'README.md'],
         tasks: ['default'],
         options: {spawn: false}
       },
@@ -39,9 +39,9 @@ module.exports = function(grunt) {
       },
       dist: {
         files: [{
-          cwd: "src",
+          cwd: 'src',
           expand: true,
-          src: ['**/*.js'],
+          src: ['**/*.js', '!src/directives/*.js', '!src/filters/*.js'],
           dest: 'dist',
           ext:'.js'
         }]
@@ -68,18 +68,15 @@ module.exports = function(grunt) {
       options: {
         config: ".jscs.json",
       },
-    }
-
-
+    },
   });
 
-  grunt.registerTask('default', ['clean', 'copy:src_to_dist',  'copy:pluginDef', 'babel']);
-  grunt.registerTask('test', [
+  grunt.registerTask('default', [
     'clean',
     'copy:src_to_dist',
     'copy:pluginDef',
     'babel',
-    'jshint',
-    'jscs',
+    // 'jshint',
+    // 'jscs',
     ]);
 };

@@ -158,49 +158,6 @@ System.register(['./config.html!text', 'lodash'], function (_export, _context) {
             });
             return p;
           }
-        }, {
-          key: 'addNewTask',
-          value: function addNewTask() {
-            var self = this;
-            var task = {
-              "name": "Github Stats: " + this.newTask.owner + "/" + this.newTask.repo,
-              "metrics": { "/raintank/apps/gitstats/*": 0 },
-              "config": {
-                "/raintank/apps/gitstats": {
-                  "repo": this.newTask.repo,
-                  "owner": this.newTask.owner,
-                  "access_token": this.newTask.access_token
-                }
-              },
-              "interval": 600,
-              "route": { "type": "any", "config": {} },
-              "enabled": true
-            };
-
-            this.backendSrv.post("/api/plugin-proxy/raintank-gitstats-app/api/tasks", task).then(function () {
-              self.validateKey();
-              self.cancelNewTask();
-            });
-          }
-        }, {
-          key: 'removeTask',
-          value: function removeTask(task) {
-            var self = this;
-            this.backendSrv.delete("/api/plugin-proxy/raintank-gitstats-app/api/tasks/" + task.id).then(function () {
-              self.validateKey();
-            });
-          }
-        }, {
-          key: 'cancelNewTask',
-          value: function cancelNewTask() {
-            this.newTask = {};
-            this.addNew = false;
-          }
-        }, {
-          key: 'toggleAddNew',
-          value: function toggleAddNew() {
-            this.addNew = true;
-          }
         }]);
 
         return GitstatsConfigCtrl;

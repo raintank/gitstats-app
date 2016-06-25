@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>Add a New Github Stats Task</h1>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <p>A task polls the Github API and stores user and repo metrics in the Grafana.net time series hosted metrics store, making metrics available on any dashboard.</p>
+  </div>
+</div>
+
+<form name="addTaskForm" ng-show="ctrl.pageReady">
+  <div class="gf-form-group">
+    <div class="gf-form">
+       <label class="gf-form-label width-12">Github Access Token</label>
+      <input type="text" class="gf-form-input max-width-20" ng-model="ctrl.access_token" placeholder="Access Token" required />
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-8">User</label>
+      <input type="text" class="gf-form-input max-width-16" ng-model="ctrl.newTask.user" placeholder="user" />
+      <label class="gf-form-label width-8">Repo</label>
+      <input type="text" class="gf-form-input max-width-16" ng-model="ctrl.newTask.repo" placeholder="repo" />
+        <button type="submit" class="btn btn-success" ng-click="addTaskForm.$valid && ctrl.queueTask()">Add</button>
+    </div>
+  
+
+    <div>
+      <div ng-repeat="t in ctrl.queuedTask">
+        <span>{{ctrl.taskLabel(t)}}</span>
+      </div>
+    </div>
+		<div class="gf-form-button-row">
+			<button ng-if="!ctrl.creatingTasks" type="submit" class="btn btn-success" ng-click="ctrl.create()">Create</button>
+      <button ng-if="ctrl.creatingTasks" disabled type="submit" class="btn btn-success"><i class="fa fa-spinner fa-spin"></i> Create</button>
+  		<a class="btn btn-link" ng-click="ctrl.cancel();">Cancel</a>
+		</div>
+  </div>
+</form>
+
+<div ng-show="ctrl.error">
+{{ctrl.error}}
+</div>

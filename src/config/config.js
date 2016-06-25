@@ -115,45 +115,6 @@ class GitstatsConfigCtrl {
     });
     return p;
   }
-
-  addNewTask() {
-    var self = this;
-    var task = {
-      "name": "Github Stats: " + this.newTask.owner + "/"+this.newTask.repo,
-      "metrics": {"/raintank/apps/gitstats/*":0},
-      "config": {
-        "/raintank/apps/gitstats": {
-          "repo": this.newTask.repo,
-          "owner": this.newTask.owner,
-          "access_token": this.newTask.access_token
-        }
-      },
-      "interval": 600,
-      "route": { "type": "any", "config": {}},
-      "enabled": true
-    };
-
-    this.backendSrv.post("/api/plugin-proxy/raintank-gitstats-app/api/tasks", task).then(function() {
-      self.validateKey();
-      self.cancelNewTask();
-    });
-  }
-
-  removeTask(task) {
-    var self = this;
-    this.backendSrv.delete("/api/plugin-proxy/raintank-gitstats-app/api/tasks/"+task.id).then(function() {
-      self.validateKey();
-    });
-  }
-
-  cancelNewTask() {
-    this.newTask = {};
-    this.addNew = false;
-  }
-
-  toggleAddNew() {
-    this.addNew = true;
-  }
 }
 
 GitstatsConfigCtrl.template = configTemplate;
